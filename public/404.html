@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>KurlyPay PG 시스템</title>
+    <!--
+      GitHub Pages SPA 폴백 (https://github.com/rafgraph/spa-github-pages)
+      존재하지 않는 정적 경로 요청을 index.html 로 보내면서, 원래 경로를
+      쿼리스트링(?/...)으로 인코딩해 넘긴다. index.html 의 복원 스크립트가
+      이를 다시 정상 경로로 history.replaceState 한다.
+      프로젝트 페이지(/test-page-01/) 이므로 pathSegmentsToKeep = 1.
+    -->
+    <script type="text/javascript">
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

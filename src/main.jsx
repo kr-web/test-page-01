@@ -1,15 +1,18 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './styles/global.css'
 
-// GitHub Pages(정적 호스팅)에서는 새로고침/딥링크 시 서버가 경로를 모르면 404 가 납니다.
-// HashRouter 는 경로를 URL 해시(#/login)로 관리해 별도 서버 설정 없이 동작합니다.
+// 검색엔진 개별 색인을 위해 경로형 URL(BrowserRouter)을 사용합니다.
+// GitHub Pages 프로젝트 페이지 하위 경로라 basename 을 지정하고,
+// 딥링크/새로고침 404 는 public/404.html SPA 폴백으로 처리합니다.
+const BASENAME = '/test-page-01'
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <HashRouter>
+    <BrowserRouter basename={BASENAME}>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   </StrictMode>
 )
