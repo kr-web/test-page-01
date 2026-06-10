@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kr-web.github.io/test-page-01/sitemap.xml
